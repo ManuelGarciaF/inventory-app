@@ -14,3 +14,5 @@ yarn-error.log*
 
 dist/
 .env
+
+public/stylesheets/style.css
