@@ -3,13 +3,13 @@ import * as asyncHandler from 'express-async-handler';
 import { Request, Response, NextFunction } from 'express';
 
 export const itemListGet = asyncHandler(async (_, res: Response) => {
-    const itemList = await Item.find({}).sort({ name: 'ascending' }).exec();
+    const itemList = await Item.find({}).sort({ name: 'ascending' }).populate('category').exec();
 
     res.render('itemList', { items: itemList });
 })
 
 export const itemDetailGet = asyncHandler(async (req: Request, res: Response) => {
-    const item = await Item.findById(req.params.id).exec();
+    const item = await Item.findById(req.params.id).populate('category').exec();
 
     res.render('itemDetail', { item });
 })

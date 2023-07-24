@@ -7,7 +7,7 @@ const router = Router();
 
 // Index page
 router.get('/', (_, res: Response) => {
-    res.render('index');
+    res.render('index', { targetPage: "/items" });
 });
 
 /* Routes for items */

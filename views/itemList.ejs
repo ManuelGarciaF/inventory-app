@@ -1,0 +1,30 @@
+<div class="px-4 sm:px-0 mx-auto">
+  <header class="bg-white rounded border border-gray-300">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <h1 class="text-xl font-bold tracking-tight text-gray-900">Item List</h1>
+    </div>
+  </header>
+
+  <div class="max-w-md mt-3 mx-auto p-3 rounded-md bg-white border border-gray-300">
+    <ul role="list" class="divide-y divide-gray-300">
+      <% items.forEach(item=> { %>
+        <li class="flex flex-row items-center justify-between gap-x-6 p-2">
+          <div class="flex-col flex">
+            <p class="text-sm font-semibold leading-6 text-gray-900">
+              <%= item.name %>
+            </p>
+            <p class="mt-1 text-xs text-gray-500">
+              <%= item.category.name %>
+            </p>
+          </div>
+          <a class="hover:bg-gray-200 rounded-full p-1 cursor-pointer"
+             hx-get="<%= item.url %>"
+             hx-push-url="true">
+            <img class="w-5 h-5" src="/images/chevron_right_FILL0_wght400_GRAD0_opsz48.svg" alt="Item Detail" />
+          </a>
+        </li>
+        <% }) %>
+    </ul>
+  </div>
+
+</div>

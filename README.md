@@ -14,3 +14,10 @@ Inventory tracking app for a supermarket built using expressjs, mongodb and tail
     + `name`: string
     + `description`: string
     + (virtual) `url`: string
+
+## Building
+
+``` sh
+$ npm run build:css
+$ npm run build
+```

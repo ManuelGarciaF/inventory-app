@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
+@layer base {
+    body {
+        font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+    }
+    a {
+        cursor: pointer;
+    }
 }

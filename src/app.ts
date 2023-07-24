@@ -13,9 +13,8 @@ const app = express();
 
 dotenv.config();
 
-const MONGO_URI = `mongodb+srv://${ process.env.MONGODB_USER }:${ process.env.MONGODB_PASS }@cluster0.e902pw3.mongodb.net/inventory_app?retryWrites=true&w=majority`
+const MONGO_URI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.e902pw3.mongodb.net/inventory_app?retryWrites=true&w=majority`
 
-console.log(MONGO_URI);
 const main = async () => {
     await mongoose.connect(MONGO_URI);
 };
@@ -31,6 +30,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, '../public')));
 
+// Reload page with htmx when necessary
+app.use((req: Request, res: Response, next: NextFunction) => {
+    // If the request is made via HTMX proceed normally and send the html snippet.
+    if (req.get("HX-Request") === "true") {
+        next();
+        return;
+    }
+    // If the request is made by going to the url normally render the response inside the index page.
+    res.render("index", { targetPage: req.originalUrl });
+})
+
 app.use('/', indexRouter);
 
 // Catch 404 and forward to error handler.
@@ -39,7 +49,7 @@ app.use(function (_req: Request, _res: Response, next: NextFunction) {
 });
 
 // Error handler
-app.use(function (err: Error & { status: number }, req, res, next) {
+app.use(function (err: Error & { status: number }, req: Request, res: Response, _next: NextFunction) {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 

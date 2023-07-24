@@ -12,7 +12,7 @@ const categorySchema = new Schema<ICategory>({
 });
 
 categorySchema.virtual('url').get(function () {
-    return `category/${this._id}`;
+    return `/category/${this._id}`;
 })
 
 export default model('Category', categorySchema);

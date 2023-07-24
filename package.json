@@ -6,7 +6,8 @@
     "start": "ts-node ./src/server.ts",
     "dev": "DEBUG=inventory-app:* node-dev ./src/server.ts",
     "build": "tsc -p .",
-    "build:css": "postcss public/stylesheets/main.css -o public/stylesheets/style.css"
+    "build:css": "postcss public/stylesheets/main.css -o public/stylesheets/style.css",
+    "dev:css": "tailwindcss -i ./public/stylesheets/main.css -o ./public/stylesheets/style.css --watch"
   },
   "dependencies": {
     "@types/cookie-parser": "^1.4.3",
