@@ -1,18 +1,18 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose'
 
 export interface ICategory {
-    name: string;
-    description: string;
-    url?: string;
+  name: string
+  description: string
+  url?: string
 }
 
 const categorySchema = new Schema<ICategory>({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-});
-
-categorySchema.virtual('url').get(function () {
-    return `/category/${this._id}`;
+  name: { type: String, required: true },
+  description: { type: String, required: true }
 })
 
-export default model('Category', categorySchema);
+categorySchema.virtual('url').get(function () {
+  return `/category/${this._id.toString()}`
+})
+
+export default model('Category', categorySchema)

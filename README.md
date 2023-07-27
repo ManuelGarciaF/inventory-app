@@ -21,3 +21,6 @@ Inventory tracking app for a supermarket built using expressjs, mongodb and tail
 $ npm run build:css
 $ npm run build
 ```
+
+## TODO
+- [ ] Remove trace from error screen

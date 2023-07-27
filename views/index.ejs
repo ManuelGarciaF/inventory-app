@@ -2,22 +2,41 @@
 <div class="min-h-full">
   <!-- Navbar -->
   <nav class="bg-gray-800">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-start">
-        <h1 class="flex-shrink-0 text-white sm:text-2xl text-sm">Inventory Tracker</h1>
-        <div class="ml-10 flex items-baseline space-x-4"
-             hx-target="#main-content"
-             hx-push-url="true">
-          <a hx-get="/items"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Items</a>
-          <a hx-get="/categories"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Categories</a>
-        </div>
+    <div
+      class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-start"
+    >
+      <h1 class="flex-shrink-0 text-white sm:text-2xl text-sm">
+        Inventory Tracker
+      </h1>
+      <div
+        class="ml-10 flex items-baseline space-x-4"
+        hx-target="#main-content"
+        hx-push-url="true"
+      >
+        <a
+          hx-get="/items"
+          href="/items"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+          >Items</a
+        >
+        <a
+          hx-get="/categories"
+          href="/categories"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+          >Categories</a
+        >
+      </div>
     </div>
   </nav>
+  <!-- Main Content -->
   <main>
-    <div id="main-content" class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8"
-         hx-get="<%= targetPage %>" hx-trigger="load"
-         hx-target="#main-content"></div>
+    <div
+      id="main-content"
+      class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8"
+      hx-get="<%= targetPage %>"
+      hx-trigger="load"
+      hx-target="#main-content"
+    ></div>
   </main>
 </div>
 <%- include('./partials/footer') %>
